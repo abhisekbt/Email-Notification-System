@@ -69,7 +69,7 @@ export default function CategoryAssignmentPage() {
       { id: selectedCompany.id, categories: draftCategories },
       {
         onSuccess: () => {
-          toast.success(`Industry sectors updated for ${selectedCompany.companyName}`);
+          toast.success(`Act sectors updated for ${selectedCompany.companyName}`);
           setPendingEdits((prev) => {
             const next = { ...prev };
             delete next[selectedCompany.id];
@@ -84,14 +84,14 @@ export default function CategoryAssignmentPage() {
   return (
     <section className="space-y-5">
       <PageHeader
-        title="Assign Industries to Clients"
-        description="Choose which industry sectors apply to each client so they receive the right updates and notices."
+        title="Assign Acts to Clients"
+        description="Choose which act sectors apply to each client so they receive the right updates and notices."
       />
 
       <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
         <SectionCard
           title="Select Client"
-          description="Click a client below to view and edit their assigned industries."
+          description="Click a client below to view and edit their assigned acts."
         >
           <div className="space-y-3">
             <SearchInput
@@ -128,7 +128,7 @@ export default function CategoryAssignmentPage() {
                           <p className="text-[11px] text-slate-600 truncate">{company.industry}</p>
                         </div>
                         <Badge variant={isActive ? "default" : "secondary"} className="shrink-0 text-[10px] font-semibold">
-                          {categoryCount} {categoryCount === 1 ? "industry" : "industries"}
+                          {categoryCount} {categoryCount === 1 ? "act" : "acts"}
                         </Badge>
                       </div>
                     </button>
@@ -140,12 +140,12 @@ export default function CategoryAssignmentPage() {
         </SectionCard>
 
         <SectionCard
-          title="Assigned Industries"
-          description="Select the industry sectors this client belongs to."
+          title="Assigned Acts"
+          description="Select the act sectors this client belongs to."
           action={
             <Button size="sm" onClick={handleSave} disabled={!selectedCompany || !isDirty || assignCategories.isPending} className="bg-slate-900 hover:bg-slate-800 text-white font-bold">
               <Save className="h-3.5 w-3.5" />
-              {assignCategories.isPending ? "Saving..." : "Save Industries"}
+              {assignCategories.isPending ? "Saving..." : "Save Acts"}
             </Button>
           }
         >
@@ -196,17 +196,17 @@ export default function CategoryAssignmentPage() {
               </div>
 
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Available Industry Sectors (Click to toggle)</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Available Act Sectors (Click to toggle)</p>
                 <SearchInput
                   value={categoryFilter}
                   onChange={(event) => setCategoryFilter(event.target.value)}
-                  placeholder="Filter available industries..."
+                  placeholder="Filter available acts..."
                 />
                 <QueryState
                   isLoading={categoriesLoading}
                   isEmpty={!categoriesLoading && filteredCategoryOptions.length === 0}
-                  emptyTitle="No industries available"
-                  emptyDescription="Create an industry sector first in the Industries page."
+                  emptyTitle="No acts available"
+                  emptyDescription="Create an act sector first in the Acts page."
                   skeletonCount={4}
                 >
                   <div className="mt-2.5 grid gap-2 sm:grid-cols-2">

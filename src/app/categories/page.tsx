@@ -47,19 +47,19 @@ export default function CategoriesPage() {
         { id: existing.id, payload: values },
         {
           onSuccess: () => {
-            toast.success(`Industry sector "${values.category}" updated.`);
+            toast.success(`Act sector "${values.category}" updated.`);
             setEditing(null);
           },
-          onError: () => toast.error("Failed to update industry sector."),
+          onError: () => toast.error("Failed to update act sector."),
         }
       );
     } else {
       createCategory.mutate(values, {
         onSuccess: () => {
-          toast.success(`New industry sector "${values.category}" created.`);
+          toast.success(`New act sector "${values.category}" created.`);
           setShowAdd(false);
         },
-        onError: () => toast.error("Failed to add industry sector."),
+        onError: () => toast.error("Failed to add act sector."),
       });
     }
   };
@@ -67,10 +67,10 @@ export default function CategoriesPage() {
   const handleDelete = (category: Category) => {
     deleteCategory.mutate(category.id, {
       onSuccess: () => {
-        toast.success(`Industry sector "${category.category}" removed.`);
+        toast.success(`Act sector "${category.category}" removed.`);
         setDeleting(null);
       },
-      onError: () => toast.error("Failed to remove industry sector."),
+      onError: () => toast.error("Failed to remove act sector."),
     });
   };
 
@@ -85,7 +85,7 @@ export default function CategoriesPage() {
   const columns: ColumnDef<Category>[] = [
     {
       accessorKey: "category",
-      header: "Industry Sector",
+      header: "Act Sector",
       cell: ({ row }) => (
         <div className="flex items-center gap-2">
           <Briefcase className="h-3.5 w-3.5 text-slate-800 shrink-0" />
@@ -138,7 +138,7 @@ export default function CategoriesPage() {
             size="sm"
             className="h-7 px-2 text-xs font-semibold text-slate-800 hover:text-slate-900"
             onClick={() => setEditing(row.original)}
-            title="Edit Industry"
+            title="Edit Act"
           >
             <Pencil className="h-3 w-3" />
             Edit
@@ -148,7 +148,7 @@ export default function CategoriesPage() {
             size="sm"
             className="h-7 px-2 text-xs text-rose-700 hover:bg-rose-50 hover:border-rose-300 font-semibold"
             onClick={() => setDeleting(row.original)}
-            title="Remove Industry"
+            title="Remove Act"
           >
             <Trash2 className="h-3 w-3" />
           </Button>
