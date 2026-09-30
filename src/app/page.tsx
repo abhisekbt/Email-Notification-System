@@ -192,9 +192,9 @@ export default function DashboardPage() {
             icon={<Building2 className="h-4 w-4" />}
           />
           <StatCard
-            title="Industries"
+            title="Acts"
             value={String(stats.activeCategories)}
-            change={`${stats.totalCategories} active industry sectors`}
+            change={`${stats.totalCategories} active act sectors`}
             variant="default"
             icon={<Tags className="h-4 w-4" />}
           />

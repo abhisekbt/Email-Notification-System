@@ -99,7 +99,7 @@ function RecipientPreviewContent() {
     },
     {
       accessorKey: "matchedCategories",
-      header: "Matched Industries",
+      header: "Matched Acts",
       cell: ({ row }) => (
         <div className="flex flex-wrap gap-1">
           {row.original.matchedCategories.map((category) => (
@@ -128,7 +128,7 @@ function RecipientPreviewContent() {
         title="Recipient Preview"
         description={
           categories.length > 0
-            ? `Viewing active clients matching industries: ${categories.join(", ")}`
+            ? `Viewing active clients matching acts: ${categories.join(", ")}`
             : "Reviewing all active clients eligible to receive email broadcasts."
         }
         actions={
@@ -186,7 +186,7 @@ function RecipientPreviewContent() {
                   description={
                     isError
                       ? "Please verify database connection."
-                      : "Adjust search filters or assign industries to your clients."
+                      : "Adjust search filters or assign acts to your clients."
                   }
                   action={
                     <Button variant="outline" size="sm" onClick={() => setSearch("")}>
@@ -215,7 +215,7 @@ function RecipientPreviewContent() {
                 <span className="font-mono font-bold text-slate-900">{recipients.length}</span>
               </div>
               <div className="flex items-center justify-between pb-2 border-b border-slate-200">
-                <span className="text-slate-600 font-medium">Distinct Industries</span>
+                <span className="text-slate-600 font-medium">Distinct Acts</span>
                 <span className="font-mono font-bold text-slate-900">{uniqueCategories.length}</span>
               </div>
               <div className="flex items-center justify-between pb-2 border-b border-slate-200">
@@ -233,7 +233,7 @@ function RecipientPreviewContent() {
 
               <div>
                 <span className="text-[10px] uppercase font-bold text-slate-600 tracking-wider">
-                  Targeted Industries
+                  Targeted Acts
                 </span>
                 <div className="mt-1.5 flex flex-wrap gap-1">
                   {uniqueCategories.map((category) => (

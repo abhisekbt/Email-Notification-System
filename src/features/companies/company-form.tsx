@@ -9,7 +9,7 @@ import { FormField, Input, Textarea } from "@/components/ui/form-field";
 import { useCategories } from "@/hooks/use-categories";
 import { CompanyFormValues, companySchema } from "@/schemas/company-schema";
 
-const industries = ["Tax Advisory", "Compliance", "Audit", "Payroll", "Corporate Advisory"];
+const acts = ["Tax Advisory", "Compliance", "Audit", "Payroll", "Corporate Advisory"];
 
 interface CompanyFormProps {
   defaultValues?: Partial<CompanyFormValues>;

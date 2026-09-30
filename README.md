@@ -6,8 +6,8 @@ An enterprise compliance & regulatory circular notification system designed for 
 
 ## Key Features
 
-- **Client Directory**: Track active client companies, PAN numbers, and multiple assigned industry sectors.
-- **Industry Sectors**: Define and organize clients into specialized industry disciplines for targeted communication.
+- **Client Directory**: Track active client companies, PAN numbers, and multiple assigned act sectors.
+- **Act Sectors**: Define and organize clients into specialized act disciplines for targeted communication.
 - **Circular & Advisory Composer**: Compose professional updates with rich merge tags (`{{contactPerson}}`, `{{companyName}}`), template loading, and multi-file document attachments (PDF, DOCX, XLSX).
 - **Scheduled Broadcasts & Background Engine**: Schedule broadcasts for future dates/times with an automated background worker dispatching circulars with attachments upon trigger.
 - **Pre-Flight Recipient Preview**: Preview matched client recipients and exclude individual clients before dispatch.

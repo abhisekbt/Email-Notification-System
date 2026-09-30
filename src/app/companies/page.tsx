@@ -196,7 +196,7 @@ export default function CompaniesPage() {
     },
     {
       accessorKey: "categories",
-      header: "Assigned Industries",
+      header: "Assigned Acts",
       cell: ({ row }) => (
         <div className="flex flex-wrap gap-1 max-w-[220px]">
           {row.original.categories.map((category) => (
@@ -259,7 +259,7 @@ export default function CompaniesPage() {
     <section className="space-y-5">
       <PageHeader
         title="Clients Directory"
-        description="Manage your client list, contact information, PAN, and assigned industries."
+        description="Manage your client list, contact information, PAN, and assigned acts."
         action={
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm" onClick={exportCSV} disabled={filtered.length === 0} className="font-semibold text-slate-800">
@@ -402,7 +402,7 @@ export default function CompaniesPage() {
               </div>
 
               <div className="rounded border border-slate-200 p-2.5 space-y-1.5 bg-white">
-                <span className="text-[10px] uppercase font-bold text-slate-600">Assigned Industries</span>
+                <span className="text-[10px] uppercase font-bold text-slate-600">Assigned Acts</span>
                 <div className="flex flex-wrap gap-1">
                   {viewing.categories.map((cat) => (
                     <Badge key={cat} variant="secondary">

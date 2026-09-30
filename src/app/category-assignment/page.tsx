@@ -76,7 +76,7 @@ export default function CategoryAssignmentPage() {
             return next;
           });
         },
-        onError: () => toast.error("Failed to update industry sectors"),
+        onError: () => toast.error("Failed to update act sectors"),
       }
     );
   };
@@ -150,7 +150,7 @@ export default function CategoryAssignmentPage() {
           }
         >
           {!selectedCompany ? (
-            <EmptyState title="No client selected" description="Select a client from the left pane to manage their industry assignments." />
+            <EmptyState title="No client selected" description="Select a client from the left pane to manage their act assignments." />
           ) : (
             <div className="space-y-4">
               <div className="rounded-md border border-slate-200 bg-slate-50 p-3.5">
@@ -173,7 +173,7 @@ export default function CategoryAssignmentPage() {
                   </p>
                   {draftCategories.length === 0 ? (
                     <p className="text-xs text-amber-800 font-medium py-1">
-                      No industry sectors assigned yet. This client will not receive automated updates.
+                      No act sectors assigned yet. This client will not receive automated updates.
                     </p>
                   ) : (
                     <div className="flex flex-wrap gap-1.5">
@@ -242,7 +242,7 @@ export default function CategoryAssignmentPage() {
                 <div className="flex justify-end pt-2">
                   <Button variant="outline" size="sm" onClick={() => updateDraft([])} className="font-semibold text-rose-700 hover:bg-rose-50 border-rose-200">
                     <Trash2 className="h-3.5 w-3.5 text-rose-600" />
-                    Remove All Industries
+                    Remove All Acts
                   </Button>
                 </div>
               ) : null}
@@ -252,7 +252,7 @@ export default function CategoryAssignmentPage() {
       </div>
 
       {selectedCompany ? (
-        <SectionCard title="Client Overview" description="Contact details and assigned industry count.">
+        <SectionCard title="Client Overview" description="Contact details and assigned act count.">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 text-xs">
             <div className="rounded-md border border-slate-200 bg-white p-3 font-mono">
               <span className="text-[10px] uppercase font-bold text-slate-500 font-sans">PAN</span>
@@ -267,7 +267,7 @@ export default function CategoryAssignmentPage() {
               <p className="text-sm font-bold text-slate-900 mt-0.5">{selectedCompany.industry || "—"}</p>
             </div>
             <div className="rounded-md border border-slate-200 bg-white p-3">
-              <span className="text-[10px] uppercase font-bold text-slate-500">Total Industries</span>
+              <span className="text-[10px] uppercase font-bold text-slate-500">Total Acts</span>
               <p className="text-sm font-bold text-slate-900 mt-0.5">{draftCategories.length} Sectors</p>
             </div>
           </div>
