@@ -194,7 +194,7 @@ export default function DashboardPage() {
           <StatCard
             title="Acts"
             value={String(stats.activeCategories)}
-            change={`${stats.totalCategories} active act sectors`}
+            change={`${stats.totalCategories} active Acts`}
             variant="default"
             icon={<Tags className="h-4 w-4" />}
           />
@@ -216,15 +216,15 @@ export default function DashboardPage() {
 
         {/* Analytics Charts Grid */}
         <div className="grid gap-6 lg:grid-cols-2">
-          {/* Industry Distribution */}
+          {/* Act Distribution */}
           <Card className="border border-slate-200 bg-white">
             <CardHeader className="p-4 border-b border-slate-200 bg-slate-50/70 flex flex-row items-center justify-between">
               <div>
                 <CardTitle className="text-xs font-bold uppercase tracking-wider text-slate-900">
-                  Clients by Industry Sector
+                  Clients by Act
                 </CardTitle>
                 <CardDescription className="text-[11px] text-slate-600">
-                  Number of active clients assigned to each industry sector
+                  Number of active clients assigned to each Act
                 </CardDescription>
               </div>
               <Briefcase className="h-4 w-4 text-slate-600" />
@@ -232,8 +232,8 @@ export default function DashboardPage() {
             <CardContent className="p-4">
               {categoryDistribution.length === 0 ? (
                 <EmptyState
-                  title="No industry data"
-                  description="Assign industry sectors to clients to see the distribution."
+                  title="No act data"
+                  description="Assign Acts to clients to see the distribution."
                   className="py-10"
                 />
               ) : (

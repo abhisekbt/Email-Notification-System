@@ -30,11 +30,11 @@ export function CategoryForm({ defaultValues, onSubmit, mode, onCancel }: Catego
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-3.5 text-xs">
-      <FormField label="Industry Sector Name" required error={errors.category?.message}>
+      <FormField label="Act Name" required error={errors.category?.message}>
         <Controller
           control={control}
           name="category"
-          render={({ field }) => <Input {...field} placeholder="e.g. Banking & Financial Services" />}
+          render={({ field }) => <Input {...field} placeholder="e.g. Income Tax Act" />}
         />
       </FormField>
 
@@ -46,7 +46,7 @@ export function CategoryForm({ defaultValues, onSubmit, mode, onCancel }: Catego
             <Textarea
               {...field}
               rows={3}
-              placeholder="e.g. Regulatory compliance, periodic returns, and statutory advisory updates."
+              placeholder="e.g. Income tax compliance, filings, and statutory requirements."
             />
           )}
         />
@@ -62,7 +62,7 @@ export function CategoryForm({ defaultValues, onSubmit, mode, onCancel }: Catego
           {isSubmitting
             ? "Saving..."
             : mode === "add"
-            ? "Add Industry"
+            ? "Add Act"
             : "Save Changes"}
         </Button>
       </div>

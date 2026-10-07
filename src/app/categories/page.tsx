@@ -47,19 +47,19 @@ export default function CategoriesPage() {
         { id: existing.id, payload: values },
         {
           onSuccess: () => {
-            toast.success(`Act sector "${values.category}" updated.`);
+            toast.success(`Act "${values.category}" updated.`);
             setEditing(null);
           },
-          onError: () => toast.error("Failed to update act sector."),
+          onError: () => toast.error("Failed to update Act."),
         }
       );
     } else {
       createCategory.mutate(values, {
         onSuccess: () => {
-          toast.success(`New act sector "${values.category}" created.`);
+          toast.success(`New Act "${values.category}" created.`);
           setShowAdd(false);
         },
-        onError: () => toast.error("Failed to add act sector."),
+        onError: () => toast.error("Failed to add Act."),
       });
     }
   };
@@ -67,10 +67,10 @@ export default function CategoriesPage() {
   const handleDelete = (category: Category) => {
     deleteCategory.mutate(category.id, {
       onSuccess: () => {
-        toast.success(`Act sector "${category.category}" removed.`);
+        toast.success(`Act "${category.category}" removed.`);
         setDeleting(null);
       },
-      onError: () => toast.error("Failed to remove act sector."),
+      onError: () => toast.error("Failed to remove Act."),
     });
   };
 
@@ -85,7 +85,7 @@ export default function CategoriesPage() {
   const columns: ColumnDef<Category>[] = [
     {
       accessorKey: "category",
-      header: "Act Sector",
+      header: "Act",
       cell: ({ row }) => (
         <div className="flex items-center gap-2">
           <Briefcase className="h-3.5 w-3.5 text-slate-800 shrink-0" />
@@ -160,24 +160,24 @@ export default function CategoriesPage() {
   return (
     <section className="space-y-5">
       <PageHeader
-        title="Industry Sectors"
-        description="Organize clients into industry sectors (e.g. Banking, Manufacturing, Real Estate, Technology) for targeted updates."
+        title="Acts"
+        description="Manage Nepalese laws and regulations used to target compliance updates."
         action={
           <Button onClick={() => setShowAdd(true)} size="sm" className="gap-1.5 font-bold text-xs bg-slate-900 hover:bg-slate-800 text-white shadow-xs">
             <Plus className="h-3.5 w-3.5" />
-            Add Industry
+            Add Act
           </Button>
         }
       />
 
       <TableToolbar
-        title="All Industry Sectors"
-        description={`Showing ${filtered.length} active industry sector(s)`}
+        title="All Acts"
+        description={`Showing ${filtered.length} act(s)`}
       >
         <SearchInput
           value={search}
           onChange={(event) => setSearch(event.target.value)}
-          placeholder="Search industry sectors or descriptions..."
+          placeholder="Search Acts or descriptions..."
           className="w-full sm:w-72"
         />
       </TableToolbar>
@@ -189,9 +189,9 @@ export default function CategoriesPage() {
         pageSize={8}
         emptyState={
           <EmptyState
-            title={isError ? "Could not load industries" : "No industry sectors found"}
+            title={isError ? "Could not load Acts" : "No Acts found"}
             description={
-              isError ? "Please verify database connection." : "Create a new industry sector to group clients."
+              isError ? "Please verify database connection." : "Create an Act to group clients."
             }
           />
         }
@@ -199,10 +199,10 @@ export default function CategoriesPage() {
 
       <DataTablePagination page={page} totalPages={totalPages} onPageChange={setPage} />
 
-      {/* Add Industry Dialog */}
+      {/* Add Act Dialog */}
       <Dialog open={showAdd} onOpenChange={setShowAdd}>
         <DialogContent className="max-w-md">
-          <DialogTitle>Add New Industry Sector</DialogTitle>
+          <DialogTitle>Add New Act</DialogTitle>
           <div className="mt-3">
             <CategoryForm
               mode="add"
@@ -213,10 +213,10 @@ export default function CategoriesPage() {
         </DialogContent>
       </Dialog>
 
-      {/* Edit Industry Dialog */}
+      {/* Edit Act Dialog */}
       <Dialog open={Boolean(editing)} onOpenChange={(open) => (open ? null : setEditing(null))}>
         <DialogContent className="max-w-md">
-          <DialogTitle>Edit Industry Sector</DialogTitle>
+          <DialogTitle>Edit Act</DialogTitle>
           <div className="mt-3">
             {editing ? (
               <CategoryForm
@@ -230,10 +230,10 @@ export default function CategoriesPage() {
         </DialogContent>
       </Dialog>
 
-      {/* View Industry Details Modal */}
+      {/* View Act Details Modal */}
       <Dialog open={Boolean(viewing)} onOpenChange={(open) => (open ? null : setViewing(null))}>
         <DialogContent className="max-w-2xl">
-          <DialogTitle>Industry Sector Details</DialogTitle>
+          <DialogTitle>Act Details</DialogTitle>
           {viewing ? (
             <div className="mt-3 space-y-4 text-xs">
               <div className="rounded-md border border-slate-200 bg-slate-50 p-3.5 flex items-start justify-between gap-3">
@@ -260,15 +260,15 @@ export default function CategoriesPage() {
                     </span>
                   </div>
                   <span className="text-[11px] text-slate-600 font-medium">
-                    Active clients mapped to receive updates sent to this industry
+                    Active clients assigned to this Act
                   </span>
                 </div>
 
                 {enrolledCompanies.length === 0 ? (
                   <div className="rounded-md border border-dashed border-slate-300 p-6 text-center text-slate-600 bg-slate-50/50">
-                    <p className="font-semibold text-slate-800">No clients are currently assigned to this industry sector.</p>
+                    <p className="font-semibold text-slate-800">No clients are currently assigned to this Act.</p>
                     <p className="text-[11px] text-slate-600 mt-1">
-                      Assign clients in <Link href="/category-assignment" className="text-slate-900 underline font-bold">Assign Industries</Link>.
+                      Assign clients in <Link href="/category-assignment" className="text-slate-900 underline font-bold">Assign Acts</Link>.
                     </p>
                   </div>
                 ) : (
@@ -297,7 +297,7 @@ export default function CategoriesPage() {
                 <Button size="sm" asChild className="bg-slate-900 hover:bg-slate-800 text-white font-semibold">
                   <Link href={`/send-regulatory-update?categories=${encodeURIComponent(viewing.category)}`}>
                     <SendHorizontal className="h-3.5 w-3.5 mr-1" />
-                    Send Update to this Industry
+                    Send Update for this Act
                   </Link>
                 </Button>
                 <Button variant="outline" size="sm" onClick={() => setViewing(null)} className="font-semibold text-slate-800">
@@ -313,7 +313,7 @@ export default function CategoriesPage() {
         open={Boolean(deleting)}
         onOpenChange={(open) => (open ? null : setDeleting(null))}
         title={`Remove "${deleting?.category ?? ""}"?`}
-        description={`Are you sure you want to remove this industry sector? It will be unassigned from all associated clients.`}
+        description={`Are you sure you want to remove this Act? It will be unassigned from all associated clients.`}
         onConfirm={() => deleting && handleDelete(deleting)}
       />
     </section>

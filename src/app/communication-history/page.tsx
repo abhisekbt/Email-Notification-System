@@ -78,7 +78,7 @@ export default function CommunicationHistoryPage() {
     },
     {
       accessorKey: "categories",
-      header: "Target Industries",
+      header: "Target Acts",
       cell: ({ row }) => (
         <div className="flex flex-wrap gap-1">
           {row.original.categories.map((category) => (
@@ -246,7 +246,7 @@ export default function CommunicationHistoryPage() {
             </div>
 
             <div className="rounded-md border border-slate-200 bg-white p-3">
-              <span className="text-[10px] uppercase font-bold text-slate-600">Target Industries</span>
+              <span className="text-[10px] uppercase font-bold text-slate-600">Target Acts</span>
               <div className="mt-1.5 flex flex-wrap gap-1">
                 {active?.categories.map((category) => (
                   <Badge key={category} variant="secondary">

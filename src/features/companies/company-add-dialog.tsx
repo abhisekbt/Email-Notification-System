@@ -35,7 +35,7 @@ export function CompanyAddDialog({
       <DialogContent className="max-w-2xl">
         <DialogTitle>Add New Client</DialogTitle>
         <p className="text-xs text-slate-600 font-medium mt-1">
-          Enter client contact details, PAN number, and assign categories.
+          Enter client contact details, PAN number, and choose one sector.
         </p>
         <div className="mt-4">
           <CompanyForm

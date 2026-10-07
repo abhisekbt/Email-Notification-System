@@ -545,12 +545,12 @@ function SendRegulatoryUpdateContent() {
                 </div>
               </FormField>
 
-              <FormField label="Target Industry Sectors" required error={errors.categories?.message}>
+              <FormField label="Target Acts" required error={errors.categories?.message}>
                 <QueryState
                   isLoading={categoriesLoading}
                   isEmpty={!categoriesLoading && categories.length === 0}
-                  emptyTitle="No industry sectors defined"
-                  emptyDescription="Create industry sectors before sending updates."
+                  emptyTitle="No Acts defined"
+                  emptyDescription="Create Acts before sending updates."
                   skeletonCount={4}
                 >
                   <div className="grid gap-2 sm:grid-cols-2">
@@ -635,7 +635,7 @@ function SendRegulatoryUpdateContent() {
           </SectionCard>
 
           <div className="space-y-4">
-            <SectionCard title="Target Audience" description="Active clients matching the selected industries.">
+            <SectionCard title="Target Audience" description="Active clients matching the selected acts.">
               <div className="space-y-2.5">
                 <div className="flex items-center justify-between rounded-md border border-slate-200 bg-slate-50 p-2">
                   <div className="flex items-center gap-2">
@@ -653,7 +653,7 @@ function SendRegulatoryUpdateContent() {
                   errorDescription="Could not load clients."
                   isEmpty={!companiesLoading && !companiesError && recipients.length === 0}
                   emptyTitle="No clients in selection"
-                  emptyDescription="Select at least one industry sector above."
+                  emptyDescription="Select at least one Act above."
                 >
                   <div className="max-h-56 overflow-y-auto space-y-1 pr-1">
                     {recipients.map((recipient) => (
@@ -682,7 +682,7 @@ function SendRegulatoryUpdateContent() {
                   <span className="font-bold text-slate-900 truncate max-w-[170px] text-right">{subject || "—"}</span>
                 </div>
                 <div className="flex items-center justify-between pt-1.5">
-                  <span className="text-slate-600 font-medium">Industries</span>
+                  <span className="text-slate-600 font-medium">Acts</span>
                   <span className="font-mono font-bold text-slate-900">{selectedCategories.length} selected</span>
                 </div>
                 <div className="flex items-center justify-between pt-1.5">

@@ -107,6 +107,7 @@ export default function CompaniesPage() {
         company.companyName.toLowerCase().includes(search.toLowerCase()) ||
         company.contactPerson.toLowerCase().includes(search.toLowerCase()) ||
         company.email.toLowerCase().includes(search.toLowerCase()) ||
+        (company.sector ?? "").toLowerCase().includes(search.toLowerCase()) ||
         company.pan.toLowerCase().includes(search.toLowerCase());
       const matchesStatus = !statusFilter || company.status === statusFilter;
       return matchesSearch && matchesStatus;
@@ -133,9 +134,9 @@ export default function CompaniesPage() {
       "Alternative Email",
       "Mobile",
       "PAN",
-      "Industry",
+      "Sector",
+      "Acts",
       "Status",
-      "Categories",
       "Created Date",
       "Address",
     ];
@@ -147,9 +148,9 @@ export default function CompaniesPage() {
       `"${c.alternativeEmail || ""}"`,
       `"${c.mobile || ""}"`,
       `"${c.pan || ""}"`,
-      `"${c.industry || ""}"`,
-      `"${c.status || ""}"`,
+      `"${c.sector || ""}"`,
       `"${(c.categories || []).join("; ")}"`,
+      `"${c.status || ""}"`,
       `"${c.createdDate || ""}"`,
       `"${(c.address || "").replace(/"/g, '""')}"`,
     ]);
@@ -171,7 +172,7 @@ export default function CompaniesPage() {
       cell: ({ row }) => (
         <div className="space-y-0.5">
           <span className="font-bold text-slate-900 text-xs">{row.original.companyName}</span>
-          <p className="text-[11px] text-slate-600 font-medium">{row.original.industry}</p>
+          <p className="text-[11px] text-slate-600 font-medium">{row.original.sector ?? "No sector assigned"}</p>
         </div>
       ),
     },
@@ -259,7 +260,7 @@ export default function CompaniesPage() {
     <section className="space-y-5">
       <PageHeader
         title="Clients Directory"
-        description="Manage your client list, contact information, PAN, and assigned acts."
+        description="Manage client details, their single sector, and assigned Acts."
         action={
           <div className="flex items-center gap-2">
             <Button variant="outline" size="sm" onClick={exportCSV} disabled={filtered.length === 0} className="font-semibold text-slate-800">
@@ -276,7 +277,7 @@ export default function CompaniesPage() {
 
       <TableToolbar>
         <SearchInput
-          placeholder="Search by company name, contact, email, or PAN..."
+          placeholder="Search by company, contact, email, sector, or PAN..."
           value={search}
           onChange={(event) => {
             setSearch(event.target.value);
@@ -352,7 +353,7 @@ export default function CompaniesPage() {
                 mobile: editing.mobile,
                 address: editing.address,
                 pan: editing.pan,
-                industry: editing.industry,
+                sector: editing.sector ?? "",
                 status: editing.status,
                 categories: editing.categories,
               }}
@@ -374,7 +375,7 @@ export default function CompaniesPage() {
               <div className="rounded-md border border-slate-200 bg-slate-50 p-3 flex items-center justify-between">
                 <div>
                   <h3 className="text-sm font-bold text-slate-900">{viewing.companyName}</h3>
-                  <p className="text-slate-600 font-medium">{viewing.industry} • Added on {viewing.createdDate}</p>
+                  <p className="text-slate-600 font-medium">{viewing.sector ?? "No sector assigned"} • Added on {viewing.createdDate}</p>
                 </div>
                 <Badge variant={statusVariant[viewing.status]}>{viewing.status}</Badge>
               </div>

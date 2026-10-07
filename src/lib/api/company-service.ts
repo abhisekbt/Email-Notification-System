@@ -9,7 +9,7 @@ export type Company = {
   mobile: string;
   address: string;
   pan: string;
-  industry: string;
+  sector: string | null;
   status: "Active" | "Inactive";
   categories: string[];
   createdDate: string;

@@ -158,7 +158,7 @@ function RecipientPreviewContent() {
               <SearchInput
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
-                placeholder="Search by client name, email, or industry..."
+                placeholder="Search by client name, email, or act..."
                 className="w-full sm:w-72"
               />
               {search ? (
@@ -208,7 +208,7 @@ function RecipientPreviewContent() {
         </SectionCard>
 
         <div className="space-y-5">
-          <SectionCard title="Audience Summary" description="Distribution across industry sectors.">
+          <SectionCard title="Audience Summary" description="Distribution across Acts.">
             <div className="space-y-3 text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                 <span className="text-slate-600 font-medium">Total Active Clients</span>

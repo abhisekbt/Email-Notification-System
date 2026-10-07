@@ -42,12 +42,13 @@ interface NavGroup {
 
 const navGroups: NavGroup[] = [
   {
-    group: "CLIENTS & ACTS",
+    group: "CLIENTS, ACTS & SECTORS",
     items: [
       { label: "Dashboard", icon: LayoutDashboard, href: "/" },
       { label: "Clients", icon: Building2, href: "/companies" },
       { label: "Acts", icon: Briefcase, href: "/categories" },
       { label: "Assign Acts", icon: SlidersHorizontal, href: "/category-assignment" },
+      { label: "Sectors", icon: Briefcase, href: "/sectors" },
     ],
   },
   {

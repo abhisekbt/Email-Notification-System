@@ -69,14 +69,14 @@ export default function CategoryAssignmentPage() {
       { id: selectedCompany.id, categories: draftCategories },
       {
         onSuccess: () => {
-          toast.success(`Act sectors updated for ${selectedCompany.companyName}`);
+          toast.success(`Acts updated for ${selectedCompany.companyName}`);
           setPendingEdits((prev) => {
             const next = { ...prev };
             delete next[selectedCompany.id];
             return next;
           });
         },
-        onError: () => toast.error("Failed to update act sectors"),
+        onError: () => toast.error("Failed to update Acts"),
       }
     );
   };
@@ -85,7 +85,7 @@ export default function CategoryAssignmentPage() {
     <section className="space-y-5">
       <PageHeader
         title="Assign Acts to Clients"
-        description="Choose which act sectors apply to each client so they receive the right updates and notices."
+        description="Choose which Nepalese laws and regulations apply to each client."
       />
 
       <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
@@ -125,7 +125,7 @@ export default function CategoryAssignmentPage() {
                       <div className="flex items-center justify-between">
                         <div className="min-w-0 pr-2">
                           <p className="text-xs font-bold text-slate-900 truncate">{company.companyName}</p>
-                          <p className="text-[11px] text-slate-600 truncate">{company.industry}</p>
+                          <p className="text-[11px] text-slate-600 truncate">{company.sector ?? "No sector assigned"}</p>
                         </div>
                         <Badge variant={isActive ? "default" : "secondary"} className="shrink-0 text-[10px] font-semibold">
                           {categoryCount} {categoryCount === 1 ? "act" : "acts"}
@@ -141,7 +141,7 @@ export default function CategoryAssignmentPage() {
 
         <SectionCard
           title="Assigned Acts"
-          description="Select the act sectors this client belongs to."
+          description="Select the Acts that apply to this client."
           action={
             <Button size="sm" onClick={handleSave} disabled={!selectedCompany || !isDirty || assignCategories.isPending} className="bg-slate-900 hover:bg-slate-800 text-white font-bold">
               <Save className="h-3.5 w-3.5" />
@@ -173,7 +173,7 @@ export default function CategoryAssignmentPage() {
                   </p>
                   {draftCategories.length === 0 ? (
                     <p className="text-xs text-amber-800 font-medium py-1">
-                      No act sectors assigned yet. This client will not receive automated updates.
+                      No Acts assigned yet. This client will not receive updates targeted to an Act.
                     </p>
                   ) : (
                     <div className="flex flex-wrap gap-1.5">
@@ -196,7 +196,7 @@ export default function CategoryAssignmentPage() {
               </div>
 
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Available Act Sectors (Click to toggle)</p>
+                <p className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Available Acts (Click to toggle)</p>
                 <SearchInput
                   value={categoryFilter}
                   onChange={(event) => setCategoryFilter(event.target.value)}
@@ -206,7 +206,7 @@ export default function CategoryAssignmentPage() {
                   isLoading={categoriesLoading}
                   isEmpty={!categoriesLoading && filteredCategoryOptions.length === 0}
                   emptyTitle="No acts available"
-                  emptyDescription="Create an act sector first in the Acts page."
+                  emptyDescription="Create an Act first in the Acts page."
                   skeletonCount={4}
                 >
                   <div className="mt-2.5 grid gap-2 sm:grid-cols-2">
@@ -264,7 +264,7 @@ export default function CategoryAssignmentPage() {
             </div>
             <div className="rounded-md border border-slate-200 bg-white p-3">
               <span className="text-[10px] uppercase font-bold text-slate-500">Sector</span>
-              <p className="text-sm font-bold text-slate-900 mt-0.5">{selectedCompany.industry || "—"}</p>
+              <p className="text-sm font-bold text-slate-900 mt-0.5">{selectedCompany.sector || "—"}</p>
             </div>
             <div className="rounded-md border border-slate-200 bg-white p-3">
               <span className="text-[10px] uppercase font-bold text-slate-500">Total Acts</span>
